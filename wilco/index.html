@@ -13,7 +13,7 @@
 <script id="proyecto" type="application/json">
 {
  "ref": "P-2026-WILCO",
- "version": "v7",
+ "version": "v8",
  "fecha": "2026-09-27",
  "estado": "En propuesta",
  "cliente": "Wilco",
@@ -721,6 +721,7 @@
   html.splash .bars i{animation-delay:2s}
   @media (prefers-reduced-motion:reduce){ #intro{display:none} }
   /* ================= PRESENTACIÓN ================= */
+  .shead .side.pl{align-self:center}
   .play{display:inline-flex; align-items:center; gap:10px; font:700 15px var(--sans); color:#fff; background:var(--green); border:0; padding:12px 20px 12px 16px; border-radius:999px; cursor:pointer; box-shadow:0 10px 30px -14px rgba(12,97,73,.8); transition:transform .4s var(--ease), box-shadow .3s, background .3s}
   .play:hover{transform:translateY(-2px); background:#0A5741; box-shadow:0 16px 36px -14px rgba(12,97,73,.9)}
   .play .ic{width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.18); display:grid; place-items:center; transition:transform .5s var(--ease)}
@@ -891,7 +892,7 @@
   const carrusel = (sc,k) => { const all = (sc.portada != null ? [null] : []).concat(sc.slides); return `<div class="car" tabindex="0" aria-roledescription="carrusel" aria-label="${esc(sc.titulo)}"><div class="trk">${sc.portada != null ? portada(sc,k) : ""}${sc.slides.map((s,i) => slideH(s, i, sc.slides.length)).join("")}</div>
     <div class="ctl"><div class="dots">${all.map((_,i) => `<button type="button" aria-label="Ir a la slide ${i+1}"></button>`).join("")}</div><div class="arr"><span class="cnt mono"></span><button type="button" class="prev" aria-label="Anterior">←</button><button type="button" class="next" aria-label="Siguiente">→</button></div></div></div>`; };
   const tratBloques = () => `<div class="trat">${TR.bloques.map((b,i) => `<div class="tb${b.imagen ? "" : " noimg"}">${b.imagen ? `<img src="${b.imagen}" alt="${esc(b.titulo)}">` : ""}<div>${b.imagen ? `<div class="n mono">${pad(i+1)}</div>` : ""}<h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p></div></div>`).join("")}</div>`;
-  S.tratamiento = () => `<div class="shead"><h2>${L.tratamiento}<span>.</span></h2><div class="side">${TR.secciones ? `<button type="button" class="play" id="play"><span class="ic"><svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 1.2v9.6L10.5 6z"/></svg></span>Ver presentación</button>` : ""}<div class="meta mono"><span>${esc(TR.nota || "")}</span></div></div></div>` + `
+  S.tratamiento = () => `<div class="shead"><h2>${L.tratamiento}<span>.</span></h2><div class="side pl">${TR.secciones ? `<button type="button" class="play" id="play"><span class="ic"><svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 1.2v9.6L10.5 6z"/></svg></span>Ver presentación</button>` : `<div class="meta mono"><span>${esc(TR.nota || "")}</span></div>`}</div></div>` + `
     <p class="t-intro">${esc(TR.intro)}</p>
     ${TR.secciones ? `<div class="acc">${TR.secciones.map((sc,k) => `<div class="ac" data-k="${k}"><button type="button" class="ac-h" aria-expanded="false" aria-controls="acb-${k}"><span class="i mono">${pad(k+1)}</span><span><span class="t">${esc(sc.titulo)}</span>${sc.subtitulo ? `<small>${esc(sc.subtitulo)}</small>` : ""}</span><span class="c mono">${sc.slides.length} slides</span><span class="pm" aria-hidden="true">+</span></button><div class="ac-b" id="acb-${k}" role="region" aria-label="${esc(sc.titulo)}"><div class="ac-in"></div></div></div>`).join("")}</div>` : tratBloques()}`;
 
