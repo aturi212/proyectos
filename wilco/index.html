@@ -13,7 +13,7 @@
 <script id="proyecto" type="application/json">
 {
  "ref": "P-2026-WILCO",
- "version": "v6",
+ "version": "v7",
  "fecha": "2026-09-27",
  "estado": "En propuesta",
  "cliente": "Wilco",
@@ -720,6 +720,90 @@
   html.splash .display .ch{animation-delay:calc(var(--i) * 45ms + 1.6s)}
   html.splash .bars i{animation-delay:2s}
   @media (prefers-reduced-motion:reduce){ #intro{display:none} }
+  /* ================= PRESENTACIÓN ================= */
+  .play{display:inline-flex; align-items:center; gap:10px; font:700 15px var(--sans); color:#fff; background:var(--green); border:0; padding:12px 20px 12px 16px; border-radius:999px; cursor:pointer; box-shadow:0 10px 30px -14px rgba(12,97,73,.8); transition:transform .4s var(--ease), box-shadow .3s, background .3s}
+  .play:hover{transform:translateY(-2px); background:#0A5741; box-shadow:0 16px 36px -14px rgba(12,97,73,.9)}
+  .play .ic{width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.18); display:grid; place-items:center; transition:transform .5s var(--ease)}
+  .play:hover .ic{transform:scale(1.12)}
+  .play svg{width:11px; height:11px; margin-left:2px}
+  #deck{position:fixed; inset:0; z-index:90; background:#07130F; color:#fff; display:none; font-family:var(--sans); overflow:hidden; user-select:none; -webkit-user-select:none}
+  #deck.on{display:block; animation:dkIn .5s var(--ease) both}
+  @keyframes dkIn{from{opacity:0; transform:scale(1.02)}}
+  #deck.idle .dk-ui{opacity:0; pointer-events:none}
+  #deck.idle{cursor:none}
+  .dk-ui{transition:opacity .5s}
+  .dk-top{position:absolute; top:0; left:0; right:0; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px clamp(16px,3vw,32px); background:linear-gradient(180deg, rgba(7,19,15,.75), transparent)}
+  .dk-brand{display:flex; align-items:center; gap:14px; min-width:0}
+  .dk-brand img{height:24px; filter:brightness(0) invert(1)}
+  .dk-brand span{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6); border-left:1px solid rgba(255,255,255,.2); padding-left:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .dk-act{display:flex; gap:8px; position:relative}
+  .dk-btn{height:42px; min-width:42px; padding:0 14px; border-radius:999px; border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.06); color:#fff; font:600 14px var(--sans); display:inline-flex; align-items:center; justify-content:center; gap:9px; cursor:pointer; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background .25s, border-color .25s, transform .3s var(--ease)}
+  .dk-btn:hover{background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.45)}
+  .dk-btn:focus-visible{outline:2px solid #8FD1B4; outline-offset:2px}
+  .dk-btn svg{width:16px; height:16px}
+  .dk-close{padding:0; width:42px}
+  .dk-close:hover{transform:rotate(90deg)}
+  .dk-menu{position:absolute; top:52px; right:50px; width:300px; background:rgba(12,31,25,.96); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:8px; box-shadow:0 30px 60px -20px rgba(0,0,0,.6); opacity:0; transform:translateY(-8px) scale(.98); transform-origin:top right; pointer-events:none; transition:opacity .25s, transform .35s var(--ease)}
+  .dk-menu.on{opacity:1; transform:none; pointer-events:auto}
+  .dk-menu button{width:100%; display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center; text-align:left; background:none; border:0; color:#fff; padding:13px 14px; border-radius:10px; cursor:pointer; font:600 16px var(--sans); transition:background .2s}
+  .dk-menu button:hover{background:rgba(255,255,255,.08)}
+  .dk-menu button.cur{background:rgba(143,209,180,.14)}
+  .dk-menu button .mono{color:#8FD1B4; font-size:10.5px}
+  .dk-menu button small{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:rgba(255,255,255,.45)}
+  .dk-stage{position:absolute; inset:0}
+  .dk-s{position:absolute; inset:0; opacity:0; visibility:hidden; transition:opacity .7s var(--ease), transform .9s var(--ease), visibility 0s .9s; transform:translateX(calc(var(--dir,1) * 40px))}
+  .dk-s.on{opacity:1; visibility:visible; transform:none; transition:opacity .7s var(--ease), transform .9s var(--ease), visibility 0s}
+  .dk-s.past{transform:translateX(calc(var(--dir,1) * -40px))}
+  /* portada */
+  .dk-cover img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.1); transition:transform 6s var(--ease)}
+  .dk-cover.on img{transform:scale(1)}
+  .dk-cover::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,19,15,.1) 25%, rgba(7,19,15,.6) 62%, rgba(7,19,15,.95)), linear-gradient(90deg, rgba(12,97,73,.6), transparent 65%)}
+  .dk-cover .cv{position:absolute; left:0; right:0; bottom:0; z-index:1; padding:clamp(24px,6vw,96px) clamp(20px,6vw,96px) clamp(90px,11vh,130px)}
+  .dk-cover .mono{color:#8FD1B4; font-size:12px}
+  .dk-cover h2{font-weight:800; font-size:clamp(56px,11vw,176px); line-height:.88; letter-spacing:-.05em; margin-top:14px}
+  .dk-cover h2 em{font-style:normal; color:#8FD1B4}
+  .dk-cover p{font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.4vw,32px); color:#DCEBE4; margin-top:18px; max-width:36ch}
+  .dk-cover.on .cv > *{animation:dkUp 1s var(--ease) both} .dk-cover.on .cv > :nth-child(2){animation-delay:.1s} .dk-cover.on .cv > :nth-child(3){animation-delay:.22s}
+  @keyframes dkUp{from{opacity:0; transform:translateY(30px)}}
+  .dk-cover.noim{background:radial-gradient(900px 600px at 80% 0%, rgba(46,138,108,.45), transparent 70%), var(--green)}
+  /* slide con imagen */
+  .dk-c{display:grid; grid-template-columns:minmax(0,1fr) clamp(300px,30vw,460px); align-items:center; gap:clamp(24px,3.5vw,56px); padding:clamp(76px,10vh,104px) clamp(20px,4vw,64px) clamp(84px,11vh,112px)}
+  .dk-c .fig{height:100%; min-height:0; display:grid; place-items:center; overflow:hidden; border-radius:14px}
+  .dk-c .fig img{max-width:100%; max-height:100%; object-fit:contain; border-radius:14px; transform:scale(1.04); transition:transform 5s var(--ease)}
+  .dk-c.on .fig img{transform:scale(1)}
+  .dk-c .tx .mono{color:#8FD1B4; font-size:11.5px}
+  .dk-c .tx .mono b{color:rgba(255,255,255,.4); font-weight:500}
+  .dk-c h3{font-weight:800; font-size:clamp(32px,3.6vw,58px); line-height:1; letter-spacing:-.035em; margin:14px 0 18px; text-wrap:balance}
+  .dk-c p{font-size:clamp(16px,1.25vw,19px); line-height:1.6; color:rgba(255,255,255,.78)}
+  .dk-c .dlg{font-family:var(--serif); font-style:italic; font-size:clamp(19px,1.6vw,24px); line-height:1.35; color:#8FD1B4; margin-top:22px; padding-left:16px; border-left:2px solid #8FD1B4}
+  .dk-c .tx > *{opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .8s var(--ease)}
+  .dk-c.on .tx > *{opacity:1; transform:none; transition-delay:.25s} .dk-c.on .tx > :nth-child(2){transition-delay:.33s} .dk-c.on .tx > :nth-child(3){transition-delay:.41s} .dk-c.on .tx > :nth-child(4){transition-delay:.49s}
+  /* slide solo texto */
+  .dk-t{display:grid; place-items:center; text-align:center; padding:12vh 8vw; background:radial-gradient(900px 600px at 50% 30%, rgba(46,138,108,.28), transparent 70%)}
+  .dk-t .mono{color:#8FD1B4; font-size:11.5px}
+  .dk-t h3{font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(40px,6vw,92px); line-height:1.05; color:#fff; margin:18px 0 22px}
+  .dk-t p{font-size:clamp(17px,1.5vw,22px); color:rgba(255,255,255,.75); max-width:52ch; margin:0 auto}
+  /* barra inferior */
+  .dk-bot{position:absolute; left:0; right:0; bottom:0; z-index:5; display:flex; align-items:center; gap:18px; padding:18px clamp(16px,3vw,32px) 22px; background:linear-gradient(0deg, rgba(7,19,15,.8), transparent)}
+  .dk-prog{flex:1; display:flex; gap:6px; align-items:center}
+  .dk-prog button{flex:var(--n); height:4px; border-radius:4px; background:rgba(255,255,255,.14); border:0; padding:0; cursor:pointer; position:relative; overflow:hidden; transition:height .2s}
+  .dk-prog button:hover{height:8px}
+  .dk-prog button i{position:absolute; inset:0; background:#8FD1B4; transform-origin:left; transform:scaleX(var(--p,0)); transition:transform .6s var(--ease)}
+  .dk-cnt{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; color:rgba(255,255,255,.6); white-space:nowrap}
+  .dk-nav{display:flex; gap:8px}
+  .dk-nav .dk-btn{width:46px; padding:0; font-size:18px}
+  .dk-nav .dk-btn:disabled{opacity:.3; cursor:default}
+  .dk-hint{position:absolute; left:50%; bottom:64px; transform:translateX(-50%); font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.45); animation:hint 4s ease both 1s; pointer-events:none; white-space:nowrap}
+  @keyframes hint{0%{opacity:0} 15%,75%{opacity:1} 100%{opacity:0}}
+  @media (max-width:820px), (orientation:portrait){
+    .dk-c{grid-template-columns:1fr; grid-template-rows:auto 1fr; align-items:start; align-content:center; padding-top:84px}
+    .dk-c .fig{height:auto; max-height:46vh}
+    .dk-c .fig img{max-height:46vh}
+    .dk-brand span{display:none}
+    .dk-btn .lb{display:none}
+    .dk-menu{right:0; width:min(300px,calc(100vw - 32px))}
+    .dk-hint{display:none}
+  }
   footer{border-top:1px solid var(--line); padding-block:22px 34px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; color:var(--muted); position:relative; z-index:1}
   footer .sel{user-select:all; color:var(--green)}
 
@@ -807,7 +891,7 @@
   const carrusel = (sc,k) => { const all = (sc.portada != null ? [null] : []).concat(sc.slides); return `<div class="car" tabindex="0" aria-roledescription="carrusel" aria-label="${esc(sc.titulo)}"><div class="trk">${sc.portada != null ? portada(sc,k) : ""}${sc.slides.map((s,i) => slideH(s, i, sc.slides.length)).join("")}</div>
     <div class="ctl"><div class="dots">${all.map((_,i) => `<button type="button" aria-label="Ir a la slide ${i+1}"></button>`).join("")}</div><div class="arr"><span class="cnt mono"></span><button type="button" class="prev" aria-label="Anterior">←</button><button type="button" class="next" aria-label="Siguiente">→</button></div></div></div>`; };
   const tratBloques = () => `<div class="trat">${TR.bloques.map((b,i) => `<div class="tb${b.imagen ? "" : " noimg"}">${b.imagen ? `<img src="${b.imagen}" alt="${esc(b.titulo)}">` : ""}<div>${b.imagen ? `<div class="n mono">${pad(i+1)}</div>` : ""}<h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p></div></div>`).join("")}</div>`;
-  S.tratamiento = () => secHead("tratamiento", `<span>${esc(TR.nota || "")}</span>`) + `
+  S.tratamiento = () => `<div class="shead"><h2>${L.tratamiento}<span>.</span></h2><div class="side">${TR.secciones ? `<button type="button" class="play" id="play"><span class="ic"><svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 1.2v9.6L10.5 6z"/></svg></span>Ver presentación</button>` : ""}<div class="meta mono"><span>${esc(TR.nota || "")}</span></div></div></div>` + `
     <p class="t-intro">${esc(TR.intro)}</p>
     ${TR.secciones ? `<div class="acc">${TR.secciones.map((sc,k) => `<div class="ac" data-k="${k}"><button type="button" class="ac-h" aria-expanded="false" aria-controls="acb-${k}"><span class="i mono">${pad(k+1)}</span><span><span class="t">${esc(sc.titulo)}</span>${sc.subtitulo ? `<small>${esc(sc.subtitulo)}</small>` : ""}</span><span class="c mono">${sc.slides.length} slides</span><span class="pm" aria-hidden="true">+</span></button><div class="ac-b" id="acb-${k}" role="region" aria-label="${esc(sc.titulo)}"><div class="ac-in"></div></div></div>`).join("")}</div>` : tratBloques()}`;
 
@@ -1002,6 +1086,92 @@
     prev.classList.add("out");
     timer = setTimeout(enter, 260);
   }
+
+  /* ================= PRESENTACIÓN ================= */
+  function deck(){
+    if (!TR.secciones) return;
+    const ICX = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>`;
+    const ICM = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg>`;
+    const imgOf = sc => { const [a,b] = typeof sc.portada === "string" ? sc.portada.split("/") : [null, sc.portada ?? 0]; const src = a ? (TR.secciones.find(x => x.id === a) || sc) : sc; return src.slides[+b] && src.slides[+b].imagen; };
+    const list = [];   // {k, html}
+    TR.secciones.forEach((sc,k) => {
+      const im = imgOf(sc);
+      list.push({k, cover:true, html:`<div class="dk-s dk-cover${im ? "" : " noim"}">${im ? `<img src="${im}" alt="">` : ""}<div class="cv"><div class="mono">${pad(k+1)} · ${esc(P.proyecto)}</div><h2>${esc(sc.titulo)}<em>.</em></h2>${sc.subtitulo ? `<p>${esc(sc.subtitulo)}</p>` : ""}</div></div>`});
+      sc.slides.forEach((s,i) => {
+        const meta = `<div class="mono">${pad(i+1)} <b>/ ${pad(sc.slides.length)}</b>${s.etiqueta ? ` · ${esc(s.etiqueta)}` : ""}</div>`;
+        const tx = `<h3>${esc(s.titulo)}</h3><p>${esc(s.texto)}</p>${s.dialogo ? `<p class="dlg">${esc(s.dialogo)}</p>` : ""}`;
+        list.push({k, html: s.imagen
+          ? `<div class="dk-s dk-c"><div class="fig"><img src="${s.imagen}" alt="${esc(s.titulo)}"></div><div class="tx">${meta}${tx}</div></div>`
+          : `<div class="dk-s dk-t"><div>${meta}${tx}</div></div>`});
+      });
+    });
+    const first = k => list.findIndex(x => x.k === k);
+    const D = document.createElement("div");
+    D.id = "deck"; D.setAttribute("role","dialog"); D.setAttribute("aria-modal","true"); D.setAttribute("aria-label","Presentación del tratamiento");
+    D.innerHTML = `<div class="dk-stage">${list.map(x => x.html).join("")}</div>
+      <div class="dk-top dk-ui"><div class="dk-brand"><img src="${P.wordmark}" alt="Wilco"><span id="dk-sec"></span></div>
+        <div class="dk-act"><button type="button" class="dk-btn" id="dk-mb" aria-haspopup="true" aria-expanded="false">${ICM}<span class="lb">Apartados</span></button><button type="button" class="dk-btn dk-close" id="dk-x" aria-label="Cerrar presentación">${ICX}</button>
+          <div class="dk-menu" id="dk-menu" role="menu">${TR.secciones.map((sc,k) => `<button type="button" role="menuitem" data-k="${k}"><span class="mono">${pad(k+1)}</span>${esc(sc.titulo)}<small>${sc.slides.length}</small></button>`).join("")}</div></div></div>
+      <div class="dk-bot dk-ui"><div class="dk-prog">${TR.secciones.map((sc,k) => `<button type="button" style="--n:${sc.slides.length + 1}" data-k="${k}" aria-label="${esc(sc.titulo)}"><i></i></button>`).join("")}</div><span class="dk-cnt" id="dk-cnt"></span><div class="dk-nav"><button type="button" class="dk-btn" id="dk-p" aria-label="Anterior">←</button><button type="button" class="dk-btn" id="dk-n" aria-label="Siguiente">→</button></div></div>
+      <div class="dk-hint">← → para avanzar · Esc para salir</div>`;
+    document.body.appendChild(D);
+    const SL = [...D.querySelectorAll(".dk-s")], menu = D.querySelector("#dk-menu"), mb = D.querySelector("#dk-mb");
+    const segs = [...D.querySelectorAll(".dk-prog button")];
+    let cur = -1, idleT, lastFocus;
+    const paint = () => {
+      const k = list[cur].k;
+      D.querySelector("#dk-sec").textContent = `${P.proyecto} · ${TR.secciones[k].titulo}`;
+      D.querySelector("#dk-cnt").textContent = `${pad(cur+1)} / ${pad(list.length)}`;
+      D.querySelector("#dk-p").disabled = cur === 0; D.querySelector("#dk-n").disabled = cur === list.length - 1;
+      segs.forEach((b,j) => { const a = first(j), n = TR.secciones[j].slides.length + 1; b.querySelector("i").style.setProperty("--p", j < k ? 1 : j > k ? 0 : (cur - a + 1) / n); });
+      menu.querySelectorAll("button").forEach(b => b.classList.toggle("cur", +b.dataset.k === k));
+    };
+    const go = i => {
+      i = Math.max(0, Math.min(list.length - 1, i)); if (i === cur) return;
+      const dir = i > cur ? 1 : -1;
+      SL.forEach((s,j) => { s.style.setProperty("--dir", dir); s.classList.toggle("on", j === i); s.classList.toggle("past", j < i); });
+      cur = i; paint();
+    };
+    const toggleMenu = v => { v = v ?? !menu.classList.contains("on"); menu.classList.toggle("on", v); mb.setAttribute("aria-expanded", String(v)); };
+    const wake = () => { D.classList.remove("idle"); clearTimeout(idleT); idleT = setTimeout(() => { if (!menu.classList.contains("on")) D.classList.add("idle"); }, 2800); };
+    const open = (i = 0) => {
+      lastFocus = document.activeElement;
+      D.classList.add("on"); document.documentElement.style.overflow = "hidden";
+      cur = -1; go(i); wake(); D.querySelector("#dk-n").focus({preventScroll:true});
+      try { const r = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); r && r.catch(() => {}); } catch(e){}
+    };
+    const close = () => {
+      if (!D.classList.contains("on")) return;
+      D.classList.remove("on", "idle"); toggleMenu(false); document.documentElement.style.overflow = "";
+      try { if (document.fullscreenElement) document.exitFullscreen(); } catch(e){}
+      lastFocus && lastFocus.focus && lastFocus.focus({preventScroll:true});
+    };
+    document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement) close(); });
+    D.querySelector("#dk-x").addEventListener("click", close);
+    D.querySelector("#dk-p").addEventListener("click", () => go(cur - 1));
+    D.querySelector("#dk-n").addEventListener("click", () => go(cur + 1));
+    mb.addEventListener("click", e => { e.stopPropagation(); toggleMenu(); });
+    menu.addEventListener("click", e => { const b = e.target.closest("button"); if (b){ go(first(+b.dataset.k)); toggleMenu(false); } });
+    segs.forEach(b => b.addEventListener("click", () => go(first(+b.dataset.k))));
+    D.querySelector(".dk-stage").addEventListener("click", e => { if (menu.classList.contains("on")) return toggleMenu(false); const x = e.clientX / innerWidth; if (x > .66) go(cur + 1); else if (x < .33) go(cur - 1); });
+    D.addEventListener("pointermove", wake);
+    let sx = null, sy = 0;
+    D.addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+    D.addEventListener("touchend", e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1)); sx = null; wake(); });
+    document.addEventListener("keydown", e => {
+      if (!D.classList.contains("on")) return;
+      const k = e.key; wake();
+      if (["ArrowRight","PageDown"," "].includes(k)){ e.preventDefault(); go(cur + 1); }
+      else if (["ArrowLeft","PageUp"].includes(k)){ e.preventDefault(); go(cur - 1); }
+      else if (k === "Home"){ e.preventDefault(); go(0); }
+      else if (k === "End"){ e.preventDefault(); go(list.length - 1); }
+      else if (k === "Escape"){ menu.classList.contains("on") ? toggleMenu(false) : close(); }
+      else if (/^[1-9]$/.test(k) && TR.secciones[+k - 1]) go(first(+k - 1));
+    });
+    const btn = document.getElementById("play");
+    btn && btn.addEventListener("click", () => open(0));
+  }
+  deck();
   window.addEventListener("hashchange", show);
   show();
 })();
