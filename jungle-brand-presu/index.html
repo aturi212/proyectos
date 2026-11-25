@@ -355,8 +355,7 @@ const tot=(t,extra)=>`<div class="tl1"><span class="mono">TOTAL${extra?' CON MÚ
 $('tot1').innerHTML=tot(t1,false);$('tot2').innerHTML=tot(t2,true);
 const notes=['Los créditos IA se abonan al arrancar. Si el consumo real supera lo estimado en más de un 20 %, se refactura la diferencia.',
   'La opción 2 incluye composición original y mezcla en estéreo y binaural. En la opción 1 se usa música de librería con licencia a cargo de Jungle.',
-  'No incluido: versiones verticales o cutdowns, otros idiomas, locución y uso en publicidad pagada.',
-  'Uso: web y redes sociales orgánicas de Jungle.'];
+  'No incluido: versiones verticales o cutdowns, otros idiomas, locución y uso en publicidad pagada.'];
 /* descarga del PDF */
 (async()=>{const d=window.claude?await claude.use('downloads'):null;const b=$('dlbtn');
   if(!d){const a=document.createElement('a');a.className='btn';a.href='P-2026-JUNGLE_V1_Presupuesto.pdf';a.setAttribute('download','P-2026-JUNGLE_V1_Presupuesto.pdf');a.textContent='Descargar PDF';a.style.display='inline-flex';a.style.alignItems='center';a.style.textDecoration='none';b.replaceWith(a);return}
