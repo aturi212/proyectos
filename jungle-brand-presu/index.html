@@ -24,8 +24,8 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--k);outline-offset:3px}
 .mono{font:400 12px/1.4 var(--mono);color:var(--muted);letter-spacing:.02em}
 .num{font-variant-numeric:tabular-nums}
-.pad{padding-inline:max(8vw,20px)}
-.wrap{max-width:1320px;margin:0 auto}
+.pad{padding-inline:max(8vw,20px,calc((100vw - 1320px)/2))}
+.wrap{max-width:none}
 
 /* barra */
 .bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:14px;background:rgba(6,6,7,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -40,11 +40,11 @@ a{color:inherit}
 .hero{position:relative;height:min(86vh,820px);min-height:520px;overflow:hidden;border-bottom:1px solid var(--line)}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%}
 .hero .lab{z-index:2}
-.hero .t{position:absolute;left:max(8vw,20px);bottom:14%;font:700 clamp(40px,6.4vw,100px)/.94 var(--sans);letter-spacing:-.035em;z-index:2}
+.hero .t{position:absolute;left:max(8vw,20px,calc((100vw - 1320px)/2));bottom:14%;font:700 clamp(40px,6.4vw,100px)/.94 var(--sans);letter-spacing:-.035em;z-index:2}
 .hero .t em{font:italic 400 1em var(--serif);letter-spacing:-.02em}
 .hero .lab{position:absolute}
-.hero .lt{left:max(8vw,20px);top:28px}.hero .tr{right:max(8vw,20px);top:28px;text-align:right}
-.hero .br{right:max(8vw,20px);bottom:11%;text-align:right}
+.hero .lt{left:max(8vw,20px,calc((100vw - 1320px)/2));top:28px}.hero .tr{right:max(8vw,20px,calc((100vw - 1320px)/2));top:28px;text-align:right}
+.hero .br{right:max(8vw,20px,calc((100vw - 1320px)/2));bottom:11%;text-align:right}
 
 /* franjas cinéticas */
 .kin.hk{border-bottom:1px solid var(--line);margin:0 0 clamp(56px,7vw,104px);padding-block:clamp(14px,1.8vw,26px)}
@@ -189,7 +189,7 @@ tr.mus td{padding:26px 0 8px}tr.mus .mono{color:var(--k2)}
 .tlist{display:none;list-style:none}
 
 footer{border-top:1px solid var(--line)}
-footer .f{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:22px;padding-right:calc(max(8vw,20px) + 14px)}
+footer .f{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:22px;padding-right:calc(max(8vw,20px,calc((100vw - 1320px)/2)) + 14px)}
 
 @media(max-width:900px){
   .head{grid-template-columns:1fr}.grid3,.tech,.needs{grid-template-columns:1fr}
